@@ -1,0 +1,15 @@
+server:
+    port: 8082
+
+Person:
+    LastName: zhaosi
+    age: 28
+    birth: 1994/08/25
+    Job: 国显光电
+    list:
+        - 1
+        - 2
+    dog:
+        type: 二哈
+        nanme: 小呆
+        age: 2
