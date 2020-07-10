@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+<td th:text="${list.id}"></td>
+<td th:text="${list.lastName}"></td>
+<td th:text="${list.email}"></td>
+<td th:text="${list.gender}"></td>
+-->
+<div>
+    <h3>修改-页面</h3>
+</div>
+<br/>
+<table>
+    <form th:action="@{/updatemsg/}+${emp.id}"  method="post">
+        <input type="hidden" name="_method" value="put">
+        用户名:<input type="text" name="lastName" th:text="${emp.lastName}" >
+        <br/>
+        <br/>
+        邮箱：<input type="text" name="email" th:text="${emp.email}" >
+        <br/>
+        <br/>
+        性别：<input type="text" name="gender" th:text="${emp.gender}">
+        <br/>
+        <br/>
+        <input type="submit" name="submit" value="提交">
+    </form>
+</table>
+</body>
+</html>
