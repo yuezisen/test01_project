@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-model="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .inner {
+            height: 150px;
+            background-color: gold;
+        }
+
+        .outer {
+            padding: 40px;
+            background-color: red;
+        }
+        .green {
+            color: green;
+        }
+
+        .thin {
+            font-weight: 200;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .active {
+            letter-spacing: 0.5em;
+        }
+        .center{
+            text-align: center;
+        }
+    </style>
+<!--    <script src="./asserts/js/vue.min.js"></script>-->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+
+
+<!--入门基本语法
+    1. vue函数：  var vm = new Vue({})
+    2. 常用指令：  {{}}  、  v-cloak 、v-text 、 v-html 、v-bind 、v-on
+    3. data  接受model模型中(即后端传入的数据)    el  (view)将数据放入到画面模板中html
+-->
+<!--<div id="app">-->
+<!--    <p v-html="msg">****</p>-->
+<!--    <p v-test="msg"></p>-->
+<!--    <p v-test="msg">xxxx</p>-->
+<!--    <p>**{{msg}}**</p>-->
+<!--    <input type="button" value="点击" @click="show" v-bind:title="messgae">-->
+<!--&lt;!&ndash;    <input type="button" value="点击" v-on:click="show" v-bind:title="messgae">&ndash;&gt;-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    var vm = new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            msg: '<h3>hello</h3>',-->
+<!--            messgae: 'this for v bind ',-->
+<!--        },-->
+<!--        methods: {-->
+<!--            show:function () {-->
+<!--                alert("hellovue")-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+
+<!--跑马灯实验
+    1.主要 事件 v-on
+    2.函数的实现原理
+    3. setInterval(()=>{}) ; clearInterval()   实现一个时间定时器
+-->
+<!--<div id="paomadeng" class="inner">-->
+<!--    <h1>{{msg}}</h1><br/>-->
+<!--    <div class="outer">-->
+<!--        <input type="button" value="浦添阳的鼻子下面长了什么？" @click="lang"><br/>-->
+<!--        <input type="button" value="停止滚动字幕" @click="stop">-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    var vm = new Vue({-->
+<!--        el: '#paomadeng',-->
+<!--        data: {-->
+<!--            msg: '长了一个菊花，不清洁导致生蛆，请劝告他清洁卫生！！！！',-->
+<!--            IntervalId: null,-->
+<!--        },-->
+<!--        methods: {-->
+<!--            lang()-->
+<!--            {-->
+<!--                if(this.IntervalId != null) return;-->
+<!--                this.IntervalId = setInterval(() => {-->
+<!--                    var start = this.msg.substring(0,1)-->
+<!--                    var end = this.msg.substring(1)-->
+<!--                    this.msg = end + start-->
+<!--                },400)-->
+<!--            },-->
+<!--            stop()-->
+<!--            {-->
+<!--                clearInterval(this.IntervalId)-->
+<!--                this.IntervalId = null;-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+
+<!--
+    事件修饰命令：
+            .stop	阻止冒泡
+            .prevent	阻止默认事件
+            .capture	添加事件侦听器时使用事件捕获模式
+            .self	只当事件在该元素本身(比如不是子元素)触发时触发回调
+            .once	事件只触发一次
+-->
+
+
+
+<!--
+v-model 用法： 实现一个计算器
+-->
+<!--<div id="calc-app">-->
+<!--    <input type="text" v-model="msg1">-->
+<!--    <select v-model="opt" >-->
+<!--        <option value="+">+</option>-->
+<!--        <option value="-">-</option>-->
+<!--        <option value="x">x</option>-->
+<!--        <option value="%">%</option>-->
+<!--    </select>-->
+<!--    <input type="text" v-model="msg2">-->
+<!--    <input type="button" value="=" @click="calc">-->
+<!--    <input type="text" v-model="result">-->
+<!--</div>-->
+<!--<script>-->
+<!--    var vm = new Vue({-->
+<!--        el: '#calc-app',-->
+<!--        data:{-->
+<!--            msg1: 0,-->
+<!--            msg2: 0,-->
+<!--            opt: '+',-->
+<!--            result: 0-->
+<!--        },-->
+<!--        methods:{-->
+<!--            calc(){-->
+<!--                switch (this.opt) {-->
+<!--                    case "+":-->
+<!--                        this.result = parseInt(this.msg1)+parseInt(this.msg2)-->
+<!--                        break-->
+<!--                    case "-":-->
+<!--                        this.result=parseInt(this.msg1)-parseInt(this.msg2)-->
+<!--                        break-->
+<!--                    case "x":-->
+<!--                        this.result = parseInt(this.msg1)*parseInt(this.msg2)-->
+<!--                        break-->
+<!--                    case "%":-->
+<!--                        this.result=parseInt(this.msg1)/parseInt(this.msg2)-->
+<!--                        break-->
+<!--                }-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--
+Vue的样式处理：v-bind:class 用来绑定数组 其中v-bind: 可以简写为 :
+    class： 类 每一个style的标识
+    style： 放置在html的head标签中 用于作为类型选择
+-->
+<!--<div id="vueofclassandstyle" class="inner">-->
+<!--    <h3 class="green thin center">Vue的样式设置——01</h3><br/>-->
+<!--    &lt;!&ndash;绑定数组&ndash;&gt;-->
+<!--    <h3 :class="['green','thin','active','center']">Vue的样式设置——02</h3>-->
+<!--    &lt;!&ndash;三元运算&ndash;&gt;-->
+<!--    <h3 :class="['green','active','center',flag?'thin':'']">Vue的样式设置——03</h3>-->
+
+<!--    <div class="outer">-->
+<!--        &lt;!&ndash;数组中使用对象 其中{'active':flag}&ndash;&gt;-->
+<!--        <h3 :class="['green','center','thin',{'active':flag}]">Vue的样式设置——04</h3>-->
+<!--        &lt;!&ndash;绑定数组 :class="classCom"&ndash;&gt;-->
+<!--        <h3 :class="classCom">Vue的样式设置——05</h3>-->
+<!--    </div>-->
+<!--    <div class="inner">-->
+<!--        <h3 :style="vuestyle">Vue的样式设置——06</h3>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    var vm = new Vue({-->
+<!--        el:'#vueofclassandstyle',-->
+<!--        data:{-->
+<!--            flag: true,-->
+<!--            classCom: {green:true,thin:true,active:true,italic:true,center:true},-->
+<!--            vuestyle:{color:'red','font-weight':400, 'letter-spacing':'0.5em','font-style':'italic' ,'text-align':'center'}-->
+<!--        },-->
+<!--        methods:{-->
+
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+
+<!--
+Vue的 v-if  v-show  v-for 的使用规则
+
+    v-if
+        每次都会重新删除或创建元素，
+        有较高的切换性能消耗
+        如果元素涉及到频繁的切换，最好不要使用 v-if, 而是推荐使用 v-show
+    v-show
+        每次不会重新进行DOM的删除和创建操作，只是切换了元素的 display:none 样式
+        有较高的初始渲染消耗
+        如果元素可能永远也不会被显示出来被用户看到，则推荐使用 v-if
+-->
+
+<div id="vifandvshow" class="inner">
+    <!--   v-if  and  v-show  的用法    -->
+    <h1 v-if='flag'>显示v-if的h1标签内容</h1>
+    <h1 v-show='flag'>显示v-show的h1标签内容</h1>
+    <div class="outer">
+        <!--  v-for 的使用方法与规则  -->
+        <p v-for="list in lists">循环体内容：{{list}}}</p>
+    </div>
+    <div class="inner">
+        <!--  v-for 的对象数组使用规则  -->
+        <p v-for="(item,i) in items">索引：{{i}}------用户id：{{item.id}}------用户名：{{item.username}} </p>
+    </div>
+    <div class="outer">
+        <!--  v-for 的循环对象  -->
+        <p v-for="(val,key,i) in item">索引：{{i}}------key：{{key}}------value：{{val}} </p>
+    </div>
+    <div class="inner">
+        <!--  v-for 的循环对象  -->
+        <p v-for="i in 3">times：{{i}}</p>
+    </div>
+
+    <!--循环中key属性的使用-->
+    <div class="outer">
+        <div class="inner">
+            <input type="text" v-model="id">
+            <input type="text" v-model="username">
+            <input type="button" value="添加" @click="add">
+        </div>
+        <p v-for="item in items" :key="item.id">
+          <input type="checkbox">{{item.id}}----{{item.username}}</input>
+        </p>
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#vifandvshow',
+        data: {
+            flag: false,
+            lists:[1,2,3,4,5,6],
+            id:'',
+            username:'',
+            items:[
+                {id:1,username:'zhangsan'},
+                {id:2,username:'lisi'},
+                {id:3,username:'wangerma'},
+            ],
+            item:{
+                id:1,
+                username:'wangxiaowu',
+                gender:'男'
+            }
+        },
+        methods:{
+            add() {
+                this.items.unshift({id: this.id,username: this.username})
+            }
+        }
+    })
+</script>
+
+</body>
+
+</html>

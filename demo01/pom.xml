@@ -32,6 +32,14 @@
             <artifactId>jquery</artifactId>
             <version>3.5.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.webjars/vue -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>vue</artifactId>
+            <version>2.6.11</version>
+        </dependency>
+
         <!--引入thymeleaf依赖 此框架用于对静态网页的动态渲染-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
